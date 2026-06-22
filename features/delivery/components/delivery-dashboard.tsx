@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { formatCurrency, formatDate } from "@/lib/formatters";
 import { queryKeys } from "@/lib/query-keys";
+import { fetchWithSession } from "@/services/http-client";
 import type { DeliveryDashboardData, DeliveryJob } from "@/types";
 
 export function DeliveryDashboard({ initial }: { initial: DeliveryDashboardData }) {
@@ -19,7 +20,7 @@ export function DeliveryDashboard({ initial }: { initial: DeliveryDashboardData 
       id: string;
       status: "picked_up" | "in_transit" | "delivered" | "failed";
     }) => {
-      const response = await fetch(`/api/delivery/deliveries/${id}`, {
+      const response = await fetchWithSession(`/api/delivery/deliveries/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status }),

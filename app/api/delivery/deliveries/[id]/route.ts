@@ -16,6 +16,16 @@ export async function PATCH(
     });
   } catch (error) {
     console.error("Delivery status update failed.", error);
-    return Response.json({ error: "Unable to update delivery." }, { status: 500 });
+    const message = error instanceof Error ? error.message : "";
+    const isClientError = [
+      "not found",
+      "not assigned",
+      "not allowed",
+      "could not be found",
+    ].some((phrase) => message.toLowerCase().includes(phrase));
+    return Response.json(
+      { error: isClientError ? message : "Unable to update delivery." },
+      { status: isClientError ? 400 : 500 },
+    );
   }
 }
