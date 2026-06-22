@@ -1,0 +1,22 @@
+export const USER_ROLES = {
+  CUSTOMER: "customer",
+  VENDOR: "vendor",
+  ADMIN: "admin",
+  DELIVERY_AGENT: "delivery_agent",
+} as const;
+
+export const APP_ROLES = Object.values(USER_ROLES);
+
+export const ROLE_IDS = {
+  [USER_ROLES.CUSTOMER]: "10000000-0000-4000-8000-000000000001",
+  [USER_ROLES.VENDOR]: "10000000-0000-4000-8000-000000000002",
+  [USER_ROLES.ADMIN]: "10000000-0000-4000-8000-000000000003",
+  [USER_ROLES.DELIVERY_AGENT]: "10000000-0000-4000-8000-000000000004",
+} as const;
+
+export const ROLE_HOME_ROUTES = {
+  [USER_ROLES.CUSTOMER]: "/account",
+  [USER_ROLES.VENDOR]: "/vendor",
+  [USER_ROLES.ADMIN]: "/admin",
+  [USER_ROLES.DELIVERY_AGENT]: "/delivery",
+} as const;

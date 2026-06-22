@@ -1,0 +1,26 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "incremental": false
+  },
+  "include": [
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    "components/layouts/**/*.tsx",
+    "features/**/*.ts",
+    "hooks/**/*.ts",
+    "lib/**/*.ts",
+    "providers/**/*.tsx",
+    "services/**/*.ts",
+    "store/**/*.ts",
+    "types/**/*.ts",
+    "validations/**/*.ts",
+    "proxy.ts",
+    "next-env.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next",
+    "components/ui"
+  ]
+}
